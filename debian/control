@@ -22,7 +22,7 @@ Description: Library for U2F communication
 Package: libu2f-host-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libu2f-host0 (= ${binary:Version})
 Description: Development files for the libu2f-host library.
  This package contains development files for the libu2f-host0 library.
 
