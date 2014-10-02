@@ -1,0 +1,15 @@
+libu2f-host.so.0 libu2f-host0 #MINVER#
+ U2F_HOST_0.0@U2F_HOST_0.0 0.0
+ u2fh_authenticate@U2F_HOST_0.0 0.0
+ u2fh_check_version@U2F_HOST_0.0 0.0
+ u2fh_devs_discover@U2F_HOST_0.0 0.0
+ u2fh_devs_done@U2F_HOST_0.0 0.0
+ u2fh_devs_init@U2F_HOST_0.0 0.0
+ u2fh_get_device_description@U2F_HOST_0.0 0.0
+ u2fh_global_done@U2F_HOST_0.0 0.0
+ u2fh_global_init@U2F_HOST_0.0 0.0
+ u2fh_is_alive@U2F_HOST_0.0 0.0
+ u2fh_register@U2F_HOST_0.0 0.0
+ u2fh_sendrecv@U2F_HOST_0.0 0.0
+ u2fh_strerror@U2F_HOST_0.0 0.0
+ u2fh_strerror_name@U2F_HOST_0.0 0.0

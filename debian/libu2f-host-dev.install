@@ -1,0 +1,4 @@
+usr/lib/*/libu2f-host.so
+usr/lib/*/libu2f-host.a
+usr/lib/*/pkgconfig
+usr/include/u2f-host
