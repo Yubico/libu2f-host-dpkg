@@ -1,0 +1,12 @@
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.0.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Release target improvements.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* Initial commit.
+

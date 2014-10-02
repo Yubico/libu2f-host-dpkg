@@ -1,0 +1,149 @@
+<!-- ##### SECTION Title ##### -->
+u2f-host
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION u2fh_global_init ##### -->
+<para>
+
+</para>
+
+@flags: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_global_done ##### -->
+<para>
+
+</para>
+
+@void: 
+
+
+<!-- ##### FUNCTION u2fh_strerror ##### -->
+<para>
+
+</para>
+
+@err: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_strerror_name ##### -->
+<para>
+
+</para>
+
+@err: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_devs_init ##### -->
+<para>
+
+</para>
+
+@devs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_devs_discover ##### -->
+<para>
+
+</para>
+
+@devs: 
+@max_index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_devs_done ##### -->
+<para>
+
+</para>
+
+@devs: 
+
+
+<!-- ##### FUNCTION u2fh_register ##### -->
+<para>
+
+</para>
+
+@devs: 
+@challenge: 
+@origin: 
+@response: 
+@flags: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_authenticate ##### -->
+<para>
+
+</para>
+
+@devs: 
+@challenge: 
+@origin: 
+@response: 
+@flags: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_sendrecv ##### -->
+<para>
+
+</para>
+
+@devs: 
+@index: 
+@cmd: 
+@send: 
+@sendlen: 
+@recv: 
+@recvlen: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_get_device_description ##### -->
+<para>
+
+</para>
+
+@devs: 
+@index: 
+@out: 
+@len: 
+@Returns: 
+
+
+<!-- ##### FUNCTION u2fh_is_alive ##### -->
+<para>
+
+</para>
+
+@devs: 
+@index: 
+@Returns: 
+
+

@@ -1,0 +1,56 @@
+<!-- ##### SECTION Title ##### -->
+u2f-host-types
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### ENUM u2fh_rc ##### -->
+<para>
+
+</para>
+
+@U2FH_OK: 
+@U2FH_MEMORY_ERROR: 
+@U2FH_TRANSPORT_ERROR: 
+@U2FH_JSON_ERROR: 
+@U2FH_BASE64_ERROR: 
+@U2FH_NO_U2F_DEVICE: 
+
+<!-- ##### ENUM u2fh_initflags ##### -->
+<para>
+
+</para>
+
+@U2FH_DEBUG: 
+
+<!-- ##### ENUM u2fh_cmdflags ##### -->
+<para>
+
+</para>
+
+@U2FH_REQUEST_USER_PRESENCE: 
+
+<!-- ##### TYPEDEF u2fh_devs ##### -->
+<para>
+
+</para>
+
+

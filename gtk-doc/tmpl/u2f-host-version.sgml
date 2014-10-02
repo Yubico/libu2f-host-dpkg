@@ -1,0 +1,68 @@
+<!-- ##### SECTION Title ##### -->
+u2f-host-version
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO U2FH_VERSION_STRING ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO U2FH_VERSION_NUMBER ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO U2FH_VERSION_MAJOR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO U2FH_VERSION_MINOR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO U2FH_VERSION_PATCH ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION u2fh_check_version ##### -->
+<para>
+
+</para>
+
+@req_version: 
+@Returns: 
+
+
