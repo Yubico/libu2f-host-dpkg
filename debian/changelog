@@ -1,5 +1,5 @@
 libu2f-host (0.0-1) unstable; urgency=low
 
-  * Initial release.  Closes: #4711.
+  * Initial release.  Closes: #764262.
 
- -- Klas Lindfors <klas@yubico.com>  Thu, 02 Oct 2014 15:37:29 +0200
+ -- Klas Lindfors <klas@yubico.com>  Mon, 06 Oct 2014 20:09:19 +0200
