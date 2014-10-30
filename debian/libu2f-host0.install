@@ -1,1 +1,2 @@
 usr/lib/*/libu2f-host.so.*
+lib/udev/rules.d
