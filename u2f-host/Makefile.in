@@ -502,6 +502,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+udevrulesdir = @udevrulesdir@
 AM_CFLAGS = $(WARN_CFLAGS)
 AM_CPPFLAGS = -I$(top_srcdir)/gl -I$(top_builddir)/gl -I$(srcdir)/.. \
 	-I$(builddir)/.. $(HIDAPI_CFLAGS) $(LIBJSON_CFLAGS)

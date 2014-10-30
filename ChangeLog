@@ -1,3 +1,77 @@
+2014-10-29  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: mark next version as 0.0.1 and add news for it
+
+2014-10-29  Klas Lindfors <klas@yubico.com>
+
+	* 70-u2f.rules: changing udev rule to use TAG+="uaccess" instead reports (and testing) indicates that ID_SECURITY_TOKEN did not work
+	on ubuntu 14.04 while uaccess works.
+
+2014-10-29  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #9 from eworm-de/udev add option to install udev rules file
+
+2014-10-29  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #7 from eworm-de/udev fix udev rule
+
+2014-10-27  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #4 from pushcx/master fix udev rule for Ubuntu
+
+2014-10-08  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c: the keyhandle in signresponse is namned
+	keyHandle
+
+2014-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/ModeSwitchYubiKeyNEO.txt: Describe modes.
+
+2014-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/ModeSwitchYubiKeyNEO.txt: Markup.
+
+2014-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* BLURB: Fix license shortname.
+
+2014-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/ModeSwitchYubiKeyNEO.txt: Add.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* README: Doc fixes.  Closes pull request #1.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* README: Layout fixes.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* README: Layout.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2014-09-16  Klas Lindfors <klas@yubico.com>
+
+	* macosx.mk: tarball is .xz
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* .travis.yml, build-aux/travis: Add travis build.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Another release fix.
+
+2014-09-16  Simon Josefsson <simon@josefsson.org>
+
+	* .gitignore, Makefile.am: Fix release target.
+
 2014-09-16  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.0.
