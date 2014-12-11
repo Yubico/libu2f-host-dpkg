@@ -9,7 +9,9 @@ Build-Depends: debhelper (>= 9),
 	       libjson0-dev,
 	       gengetopt,
 	       help2man,
-	       dh-autoreconf
+	       dh-autoreconf,
+	       gtk-doc-tools,
+	       dblatex
 Standards-Version: 3.9.6
 Homepage: https://developers.yubico.com/libu2f-host/
 Vcs-Git: git://github.com/Yubico/libu2f-host-dpkg.git

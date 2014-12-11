@@ -1,12 +1,18 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@ --parallel
+	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
 		--disable-silent-rules \
-		--with-udevrulesdir=/lib/udev/rules.d
+		--with-udevrulesdir=/lib/udev/rules.d \
+		--enable-gtk-doc \
+		--enable-gtk-doc-pdf \
+		--enable-gtk-doc-html
 
 override_dh_auto_clean:
 	test -f Makefile && dh_auto_clean || true
+
+override_dh_compress:
+	dh_compress -Xu2f-host.pdf

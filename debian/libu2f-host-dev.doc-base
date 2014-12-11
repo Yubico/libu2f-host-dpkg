@@ -1,0 +1,12 @@
+Document: u2f-host
+Title: Universal 2nd Factor C Library API Manual
+Author: Simon Josefsson
+Abstract: U2F Host C Library Reference Manual
+Section: Programming/C
+
+Format: PDF
+Files: /usr/share/doc/libu2f-host-dev/u2f-host.pdf
+
+Format: HTML
+Index: /usr/share/gtk-doc/html/u2f-host/index.html
+Files: /usr/share/gtk-doc/html/u2f-host/*.html
