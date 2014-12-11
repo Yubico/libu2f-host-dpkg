@@ -1,3 +1,27 @@
+2014-11-28  Klas Lindfors <klas@yubico.com>
+
+	* NEWS: NEWS for 0.0.2
+
+2014-11-27  Klas Lindfors <klas@yubico.com>
+
+	* 70-u2f.rules: one more pid for udev
+
+2014-11-24  Klas Lindfors <klas@yubico.com>
+
+	* 70-u2f.rules: whitelist more pids for udev
+
+2014-10-30  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am: publish signatures for windows builds
+
+2014-10-30  Klas Lindfors <klas@yubico.com>
+
+	* macosx.mk: replace wget with curl
+
+2014-10-29  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions
+
 2014-10-29  Klas Lindfors <klas@yubico.com>
 
 	* NEWS, configure.ac: mark next version as 0.0.1 and add news for it
