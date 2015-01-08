@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2014 Yubico AB
+# Copyright (C) 2013-2015 Yubico AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([libu2f-host], [0.0.2], [yubico-devel@googlegroups.com])
+AC_INIT([libu2f-host], [0.0.3], [yubico-devel@googlegroups.com])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -21,7 +21,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 # http://www.gnu.org/s/libtool/manual/html_node/Updating-version-info.html
 AC_SUBST(LT_CURRENT, 0)  # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 AC_SUBST(LT_AGE, 0)      # Interfaces added:      CURRENT++, AGE++, REVISION=0
-AC_SUBST(LT_REVISION, 2) # No interfaces changed:                   REVISION++
+AC_SUBST(LT_REVISION, 3) # No interfaces changed:                   REVISION++
 
 AM_INIT_AUTOMAKE([gnits dist-xz no-dist-gzip std-options -Wall])
 AM_SILENT_RULES([yes])
@@ -36,6 +36,16 @@ AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 
 PKG_CHECK_MODULES([LIBJSON], [json-c], [], [
   PKG_CHECK_MODULES([LIBJSON], [json])])
+
+# Check for json_object_to_json_string_ext, needed for pretty printing.
+am_save_CFLAGS="$CFLAGS"
+am_save_LIBS="$LIBS"
+CFLAGS="$CFLAGS $LIBJESON_CFLAGS"
+LIBS="$LIBS $LIBJSON_LIBS"
+AC_CHECK_FUNCS([json_object_to_json_string_ext])
+AC_CHECK_FUNCS([json_object_object_get_ex])
+CFLAGS=$am_save_CFLAGS
+LIBS=$am_save_LIBS
 
 PKG_CHECK_MODULES([HIDAPI], [hidapi], [], [
   PKG_CHECK_MODULES([HIDAPI], [hidapi-hidraw])])

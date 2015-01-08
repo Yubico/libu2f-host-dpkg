@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2014 Yubico AB
+# Copyright (C) 2013-2015 Yubico AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@ ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
 EXTRA_DIST = 70-u2f.rules BLURB cfg.mk macosx.mk windows.mk
+
+EXTRA_DIST += doc/Mode_switch_YubiKey_NEO.adoc
 
 udevrulesdir = @udevrulesdir@
 dist_udevrules_DATA = 70-u2f.rules
