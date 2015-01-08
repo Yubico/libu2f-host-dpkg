@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# Copyright (C) 2013-2014 Yubico AB
+# Copyright (C) 2013-2015 Yubico AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -99,9 +99,9 @@ DIST_COMMON = INSTALL NEWS README AUTHORS ChangeLog THANKS \
 	$(top_srcdir)/configure $(am__configure_deps) \
 	$(srcdir)/config.h.in $(dist_udevrules_DATA) COPYING \
 	build-aux/ar-lib build-aux/compile build-aux/config.guess \
-	build-aux/config.sub build-aux/depcomp build-aux/install-sh \
-	build-aux/missing build-aux/ltmain.sh \
-	$(top_srcdir)/build-aux/ar-lib $(top_srcdir)/build-aux/compile \
+	build-aux/config.sub build-aux/install-sh build-aux/missing \
+	build-aux/ltmain.sh $(top_srcdir)/build-aux/ar-lib \
+	$(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
 	$(top_srcdir)/build-aux/install-sh \
@@ -355,6 +355,7 @@ HAVE_FFSL = @HAVE_FFSL@
 HAVE_FFSLL = @HAVE_FFSLL@
 HAVE_INTTYPES_H = @HAVE_INTTYPES_H@
 HAVE_LONG_LONG_INT = @HAVE_LONG_LONG_INT@
+HAVE_MAX_ALIGN_T = @HAVE_MAX_ALIGN_T@
 HAVE_MBSLEN = @HAVE_MBSLEN@
 HAVE_MEMCHR = @HAVE_MEMCHR@
 HAVE_MEMPCPY = @HAVE_MEMPCPY@
@@ -528,7 +529,8 @@ udevrulesdir = @udevrulesdir@
 SUBDIRS = gl u2f-host src tests gtk-doc
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
-EXTRA_DIST = 70-u2f.rules BLURB cfg.mk macosx.mk windows.mk
+EXTRA_DIST = 70-u2f.rules BLURB cfg.mk macosx.mk windows.mk \
+	doc/Mode_switch_YubiKey_NEO.adoc
 dist_udevrules_DATA = 70-u2f.rules
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

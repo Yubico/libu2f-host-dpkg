@@ -9,10 +9,12 @@ u2f-host-types
 
 </para>
 
+
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
+
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -31,6 +33,7 @@ u2f-host-types
 @U2FH_JSON_ERROR: 
 @U2FH_BASE64_ERROR: 
 @U2FH_NO_U2F_DEVICE: 
+@U2FH_AUTHENTICATOR_ERROR: 
 
 <!-- ##### ENUM u2fh_initflags ##### -->
 <para>

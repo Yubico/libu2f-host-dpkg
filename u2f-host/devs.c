@@ -1,18 +1,18 @@
 /*
-  Copyright (C) 2013-2014 Yubico AB
+  Copyright (C) 2013-2015 Yubico AB
 
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 2.1, or (at your option) any
+  later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU Lesser General Public License
+  along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <config.h>
@@ -192,6 +192,10 @@ init_device (u2fh_devs * devs, unsigned index)
       U2FHID_INIT_RESP initresp;
       memcpy (&initresp, resp, resplen);
       devs->devs[index].cid = initresp.cid;
+      devs->devs[index].versionInterface = initresp.versionInterface;
+      devs->devs[index].versionMajor = initresp.versionMajor;
+      devs->devs[index].versionMinor = initresp.versionMinor;
+      devs->devs[index].capFlags = initresp.capFlags;
     }
   else
     {
@@ -343,6 +347,15 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
 			{
 			  fprintf (stderr, "device %s discovered as '%s'\n",
 				   dev->device_path, dev->device_string);
+			  fprintf (stderr,
+				   "  version (Interface, Major, "
+				   "Minor, Build): %d, %d, "
+				   "%d, %d  capFlags: %d\n",
+				   dev->versionInterface,
+				   dev->versionMajor,
+				   dev->versionMinor,
+				   dev->versionBuild,
+				   dev->capFlags);
 			}
 		    }
 		  res = U2FH_OK;

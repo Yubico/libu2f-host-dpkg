@@ -1,3 +1,124 @@
+2015-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.0.3.
+
+2015-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk, u2f-host/devs.c, u2f-host/internal.h: Fix syntax check
+	nits.
+
+2015-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, NEWS: Add NEWS entries.  Dist more.
+
+2015-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* .gitignore, COPYING.LGPLv2, Makefile.am, README, cfg.mk,
+	configure.ac, macosx.mk, src/Makefile.am, src/cmdline.ggo,
+	src/u2f-host.c, tests/Makefile.am, tests/basic.c,
+	u2f-host/Makefile.am, u2f-host/authenticate.c,
+	u2f-host/b64/cdecode.h, u2f-host/b64/cencode.h, u2f-host/cdecode.c,
+	u2f-host/cencode.c, u2f-host/devs.c, u2f-host/error.c,
+	u2f-host/global.c, u2f-host/inc/u2f.h, u2f-host/inc/u2f_hid.h,
+	u2f-host/internal.h, u2f-host/register.c,
+	u2f-host/u2f-host-types.h, u2f-host/u2f-host-version.h.in,
+	u2f-host/u2f-host.h, u2f-host/u2f-host.map, u2f-host/u2fmisc.c,
+	u2f-host/version.c, windows.mk: Update license and copyright.
+
+2015-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/snippet/arg-nonnull.h,
+	build-aux/snippet/c++defs.h, build-aux/snippet/warn-on-use.h,
+	build-aux/useless-if-before-free, build-aux/vc-list-files,
+	gl/Makefile.am, gl/check-version.c, gl/check-version.h,
+	gl/gl_openssl.h, gl/m4/00gnulib.m4, gl/m4/absolute-header.m4,
+	gl/m4/extensions.m4, gl/m4/extern-inline.m4, gl/m4/gl-openssl.m4,
+	gl/m4/gnulib-cache.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/gnulib-tool.m4, gl/m4/include_next.m4,
+	gl/m4/ld-version-script.m4, gl/m4/longlong.m4,
+	gl/m4/manywarnings.m4, gl/m4/multiarch.m4, gl/m4/off_t.m4,
+	gl/m4/onceonly.m4, gl/m4/sha256.m4, gl/m4/ssize_t.m4,
+	gl/m4/stdalign.m4, gl/m4/stddef_h.m4, gl/m4/stdint.m4,
+	gl/m4/string_h.m4, gl/m4/strverscmp.m4, gl/m4/sys_types_h.m4,
+	gl/m4/warn-on-use.m4, gl/m4/warnings.m4, gl/m4/wchar_t.m4,
+	gl/sha256.c, gl/sha256.h, gl/stdalign.in.h, gl/stddef.in.h,
+	gl/stdint.in.h, gl/string.in.h, gl/strverscmp.c, gl/sys_types.in.h,
+	maint.mk: Use gnulib LGPLv2.
+
+2014-12-22  Simon Josefsson <simon@josefsson.org>
+
+	* : Merge pull request #12 from bramvd/versioninfo Add version information to u2fdevice and print in debug mode
+
+2014-12-22  Bram Vandoren <bram@bram.be>
+
+	* u2f-host/devs.c, u2f-host/internal.h: add version information to
+	u2fdevice and print in debug mode
+
+2014-12-21  Bram Vandoren <bram@bram.be>
+
+	* src/u2f-host.c: send errors to stderr instead of stdout
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml: Dropped Windows build from Travis.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml: Added more dependencies to Travis build.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml, build-aux/travis: Updated Travis build.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* configure.ac, u2f-host/u2fmisc.c: Conditional definition of
+	json_object_object_get_ex().
+
+2014-12-10  Henrik Stråth <henrik.strath@gmail.com>
+
+	* doc/ModeSwitchYubiKeyNEO.txt, doc/Mode_switch_YubiKey_NEO.adoc: 
+	Asciidoc polish.
+
+2014-12-10  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/error.c,
+	u2f-host/u2f-host-types.h: try to make authenticate behave a bit
+	better
+
+2014-12-10  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/u2fmisc.c: add a timeout for hid_read()
+
+2014-12-10  Henrik Stråth <henrik@yubico.com>
+
+	* README, README.adoc: Corrected mistake with .adoc symlinking
+
+2014-12-08  Klas Lindfors <klas@yubico.com>
+
+	* .gitignore: ignore more
+
+2014-12-08  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/register.c: fixup indentation
+
+2014-12-08  Klas Lindfors <klas@yubico.com>
+
+	* macosx.mk: add upload target for mac
+
+2014-12-08  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/register.c: don't try to
+	comunicate with dead devices
+
+2014-12-02  Henrik Stråth <henrik.strath@gmail.com>
+
+	* NEWS, README.adoc: Polished README and NEWS
+
+2014-11-28  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions
+
 2014-11-28  Klas Lindfors <klas@yubico.com>
 
 	* NEWS: NEWS for 0.0.2

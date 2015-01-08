@@ -1,18 +1,18 @@
 /*
-  Copyright (C) 2013-2014 Yubico AB
+  Copyright (C) 2013-2015 Yubico AB
 
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 2.1, or (at your option) any
+  later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU Lesser General Public License
+  along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <config.h>
@@ -23,6 +23,14 @@
 #include "sha256.h"
 
 #define RESPHEAD_SIZE 7
+#define HID_TIMEOUT 750
+
+#ifdef HAVE_JSON_OBJECT_OBJECT_GET_EX
+#define u2fh_json_object_object_get(obj, key, value) json_object_object_get_ex(obj, key, &value)
+#else
+typedef int json_bool;
+#define u2fh_json_object_object_get(obj, key, value) (value = json_object_object_get(obj, key)) == NULL ? (json_bool)FALSE : (json_bool)TRUE
+#endif
 
 static void
 dumpHex (unsigned char *data, int offs, int len)
@@ -104,7 +112,7 @@ prepare_origin (const char *jsonstr, unsigned char *p)
   if (debug)
     fprintf (stderr, "JSON: %s\n", json_object_to_json_string (jo));
 
-  if (!json_object_object_get_ex (jo, "appId", &k))
+  if (u2fh_json_object_object_get (jo, "appId", k) == FALSE)
     return U2FH_JSON_ERROR;
 
   app_id = json_object_get_string (k);
@@ -211,7 +219,7 @@ u2fh_sendrecv (u2fh_devs * devs, unsigned index, uint8_t cmd,
     int maxlen = *recvlen;
     int recvddata = 0;
     short datalen;
-    int rc = hid_read (dev->devh, data, len);
+    int rc = hid_read_timeout (dev->devh, data, len, HID_TIMEOUT);
     sequence = 0;
 
     if (debug)
@@ -243,7 +251,7 @@ u2fh_sendrecv (u2fh_devs * devs, unsigned index, uint8_t cmd,
 
     while (datalen > recvddata)
       {
-	rc = hid_read (dev->devh, data, len);
+	rc = hid_read_timeout (dev->devh, data, len, HID_TIMEOUT);
 	if (debug)
 	  {
 	    fprintf (stderr, "USB read rc read %d\n", len);
@@ -334,7 +342,7 @@ get_fixed_json_data (const char *jsonstr, const char *key, char *p,
   if (debug)
     fprintf (stderr, "JSON: %s\n", json_object_to_json_string (jo));
 
-  if (!json_object_object_get_ex (jo, key, &k))
+  if (u2fh_json_object_object_get (jo, key, k) == FALSE)
     return U2FH_JSON_ERROR;
 
   urlb64 = json_object_get_string (k);

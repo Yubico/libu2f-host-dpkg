@@ -1,7 +1,6 @@
 <ONLINE href="https://github.com/Yubico/libu2f-host">
 <ANCHOR id="u2f-host-u2f-host" href="u2f-host/u2f-host-u2f-host.html">
 <ANCHOR id="u2f-host-u2f-host.functions" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.functions">
-<ANCHOR id="u2f-host-u2f-host.object-hierarchy" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.object-hierarchy">
 <ANCHOR id="u2f-host-u2f-host.description" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.description">
 <ANCHOR id="u2f-host-u2f-host.functions_details" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.functions_details">
 <ANCHOR id="u2fh-global-init" href="u2f-host/u2f-host-u2f-host.html#u2fh-global-init">
@@ -19,7 +18,6 @@
 <ANCHOR id="u2f-host-u2f-host.other_details" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.other_details">
 <ANCHOR id="u2f-host-u2f-host-types" href="u2f-host/u2f-host-u2f-host-types.html">
 <ANCHOR id="u2f-host-u2f-host-types.other" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.other">
-<ANCHOR id="u2f-host-u2f-host-types.object-hierarchy" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.object-hierarchy">
 <ANCHOR id="u2f-host-u2f-host-types.description" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.description">
 <ANCHOR id="u2f-host-u2f-host-types.functions_details" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.functions_details">
 <ANCHOR id="u2f-host-u2f-host-types.other_details" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.other_details">
@@ -30,7 +28,6 @@
 <ANCHOR id="u2f-host-u2f-host-version" href="u2f-host/u2f-host-u2f-host-version.html">
 <ANCHOR id="u2f-host-u2f-host-version.functions" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.functions">
 <ANCHOR id="u2f-host-u2f-host-version.other" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.other">
-<ANCHOR id="u2f-host-u2f-host-version.object-hierarchy" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.object-hierarchy">
 <ANCHOR id="u2f-host-u2f-host-version.description" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.description">
 <ANCHOR id="u2f-host-u2f-host-version.functions_details" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.functions_details">
 <ANCHOR id="u2fh-check-version" href="u2f-host/u2f-host-u2f-host-version.html#u2fh-check-version">
