@@ -1,3 +1,35 @@
+2015-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Typo.
+
+2015-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.0.4.
+
+2015-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update gnulib files.
+
+2015-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* src/u2f-host.c, u2f-host/b64/cdecode.h, u2f-host/b64/cencode.h,
+	u2f-host/cdecode.c, u2f-host/cencode.c, u2f-host/devs.c,
+	u2f-host/inc/u2f.h, u2f-host/inc/u2f_hid.h, u2f-host/internal.h,
+	u2f-host/u2fmisc.c: Indent.
+
+2015-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add NEWS item.
+
+2015-01-20  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/u2fmisc.c: add an exponential growing timeout for slow
+	devices relates yubico/pam-u2f#5
+
+2015-01-20  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions after release
+
 2015-01-08  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.0.3.

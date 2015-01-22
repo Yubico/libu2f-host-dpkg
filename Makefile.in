@@ -99,9 +99,9 @@ DIST_COMMON = INSTALL NEWS README AUTHORS ChangeLog THANKS \
 	$(top_srcdir)/configure $(am__configure_deps) \
 	$(srcdir)/config.h.in $(dist_udevrules_DATA) COPYING \
 	build-aux/ar-lib build-aux/compile build-aux/config.guess \
-	build-aux/config.sub build-aux/install-sh build-aux/missing \
-	build-aux/ltmain.sh $(top_srcdir)/build-aux/ar-lib \
-	$(top_srcdir)/build-aux/compile \
+	build-aux/config.sub build-aux/depcomp build-aux/install-sh \
+	build-aux/missing build-aux/ltmain.sh \
+	$(top_srcdir)/build-aux/ar-lib $(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
 	$(top_srcdir)/build-aux/install-sh \
@@ -1065,7 +1065,6 @@ my-release:
 	gpg --detach-sign $(PACKAGE)-$(VERSION).tar.xz
 	gpg --detach-sign $(PACKAGE)-$(VERSION)-win32.zip
 	gpg --detach-sign $(PACKAGE)-$(VERSION)-win64.zip
-
 	gpg --verify $(PACKAGE)-$(VERSION).tar.xz.sig
 	gpg --verify $(PACKAGE)-$(VERSION)-win32.zip.sig
 	gpg --verify $(PACKAGE)-$(VERSION)-win64.zip.sig
