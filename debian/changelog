@@ -2,6 +2,7 @@ libu2f-host (1.0.0-1) unstable; urgency=low
 
   * New upstream version.
   * Tweak watch file.
+  * Update upstream-signing-key.pgp.
 
  -- Simon Josefsson <simon@josefsson.org>  Tue, 22 Sep 2015 08:45:55 +0200
 
