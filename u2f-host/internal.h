@@ -18,12 +18,19 @@
 #ifndef INTERNAL_H
 #define INTERNAL_H
 
-#include <u2f-host/u2f-host.h>
+#include <u2f-host.h>
 #include <hidapi.h>
 #include <stdio.h>
 
 #include "inc/u2f.h"
 #include "inc/u2f_hid.h"
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(x) (usleep((x) * 1000))
+#endif
 
 struct u2fdevice
 {

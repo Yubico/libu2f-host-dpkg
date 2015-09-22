@@ -19,12 +19,13 @@ ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
-EXTRA_DIST = 70-u2f.rules BLURB cfg.mk macosx.mk windows.mk
+EXTRA_DIST = BLURB cfg.mk macosx.mk windows.mk COPYING.LGPLv2
 
 EXTRA_DIST += doc/Mode_switch_YubiKey_NEO.adoc
 
+EXTRA_DIST += 70-u2f.rules 70-old-u2f.rules
 udevrulesdir = @udevrulesdir@
-dist_udevrules_DATA = 70-u2f.rules
+dist_udevrules_DATA = $(udevrulesfile)
 
 # Release
 
@@ -56,4 +57,5 @@ my-release:
 	$(YUBICO_WWW_REPO)/publish $(PACKAGE) $(VERSION) $(PACKAGE)-$(VERSION).tar.xz*
 	$(YUBICO_WWW_REPO)/publish $(PACKAGE) $(VERSION) $(PACKAGE)-$(VERSION)-win32.zip*
 	$(YUBICO_WWW_REPO)/publish $(PACKAGE) $(VERSION) $(PACKAGE)-$(VERSION)-win64.zip*
-	rsync -a $(srcdir)/gtk-doc/html/ $(YUBICO_WWW_REPO)/$(PACKAGE)/gtk-doc/
+	$(HELP2ADOC) -e src/u2f-host -n "Yubico Universal 2nd Factor (U2F) Host Tool" > u2f-host.1.txt
+	$(YUBICO_WWW_REPO)/save-mans $(PACKAGE) u2f-host.1.txt

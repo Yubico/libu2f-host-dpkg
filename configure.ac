@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([libu2f-host], [0.0.4], [yubico-devel@googlegroups.com])
+AC_INIT([libu2f-host], [1.0.0], [yubico-devel@googlegroups.com])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -21,7 +21,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 # http://www.gnu.org/s/libtool/manual/html_node/Updating-version-info.html
 AC_SUBST(LT_CURRENT, 0)  # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 AC_SUBST(LT_AGE, 0)      # Interfaces added:      CURRENT++, AGE++, REVISION=0
-AC_SUBST(LT_REVISION, 4) # No interfaces changed:                   REVISION++
+AC_SUBST(LT_REVISION, 5) # No interfaces changed:                   REVISION++
 
 AM_INIT_AUTOMAKE([gnits dist-xz no-dist-gzip std-options -Wall])
 AM_SILENT_RULES([yes])
@@ -33,6 +33,7 @@ LT_INIT([win32-dll])
 
 GTK_DOC_CHECK(1.1)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
+AM_MISSING_PROG(HELP2ADOC, help2adoc, $missing_dir)
 
 PKG_CHECK_MODULES([LIBJSON], [json-c], [], [
   PKG_CHECK_MODULES([LIBJSON], [json])])
@@ -97,6 +98,12 @@ AC_ARG_WITH([udevrulesdir],
   [], [])
 AC_SUBST([udevrulesdir], [$with_udevrulesdir])
 
+PKG_CHECK_MODULES([UDEV], [udev >= 188],
+                  udevrulesfile=70-u2f.rules,
+                  udevrulesfile=70-old-u2f.rules,
+                  )
+AC_SUBST([udevrulesfile], [$udevrulesfile])
+
 AC_CONFIG_FILES([
   Makefile
   gl/Makefile
@@ -115,6 +122,7 @@ AC_MSG_NOTICE([summary of build options:
   Host type:        ${host}
   Install prefix:   ${prefix}
   udev rules:       ${with_udevrulesdir:-N/A}
+  udev rulefile:    ${udevrulesfile}
   Compiler:         ${CC}
   Shared library:   ${enable_shared}
   Static library:   ${enable_static}
