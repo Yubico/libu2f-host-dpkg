@@ -1,3 +1,93 @@
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* NEWS: NEWS for 1.0.0
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am: use $(..) instead of @..@
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* src/Makefile.am, src/u2f-host.c, tests/Makefile.am,
+	tests/basic.c, u2f-host/internal.h, u2f-host/u2f-host.h,
+	u2f-host/version.c: fixup header inclusions to match the pkg-config fixes #13
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/internal.h: include windows.h on WIN32 otherwise mingw won't find out how to use Sleep()
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/register.c: don't prepare a response if there was no data
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/error.c, u2f-host/register.c,
+	u2f-host/u2f-host-types.h: add a timeout for authenticate and
+	register for now it's hard-coded to 15 iterations of the loop which should be
+	close to 15 seconds.  fixes #24
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: add NEWS for next version and mark it as 1.0.0 relates #25
+
+2015-07-06  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/internal.h, u2f-host/register.c: 
+	don't use sleep() in the library on windows use Sleep() and others usleep()
+
+2015-07-03  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am, configure.ac: add help2adoc for homepage building
+
+2015-07-03  Klas Lindfors <klas@yubico.com>
+
+	* src/cmdline.ggo: set package to u2f-host to get correct name in
+	help (and man)
+
+2015-06-06  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am: dist COPYING.LGPLv2 fixes #20
+
+2015-05-20  Klas Lindfors <klas@yubico.com>
+
+	* macosx.mk: fix path to the mac libraries
+
+2015-05-19  Klas Lindfors <klas@yubico.com>
+
+	* macosx.mk: add stuff to mac makefile so it works the linking with mac has to be fixed with install_name_tool, this
+	can never have worked..
+
+2015-04-10  Klas Lindfors <klas@yubico.com>
+
+	* windows.mk: fix windows build to use static-libgcc
+
+2015-04-10  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions
+
+2015-03-12  Klas Lindfors <klas@yubico.com>
+
+	* configure.ac: correct filename relates #15
+
+2015-03-12  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am, configure.ac: select which udev file to install based
+	on udev version 188 is probaböly the correct version to check for..  resolves #15
+
+2015-03-12  Klas Lindfors <klas@yubico.com>
+
+	* 70-old-u2f.rules, 70-u2f.rules: add a udev rule for older udev
+	versions relates to #15
+
+2015-03-05  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #14 from phoeagon/master add pam:// to the allowed origin
+
+2015-01-27  Klas Lindfors <klas@yubico.com>
+
+	* README: demo.yubico.com should use https
+
 2015-01-22  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Typo.
@@ -109,7 +199,7 @@
 
 2014-12-10  Henrik Stråth <henrik.strath@gmail.com>
 
-	* doc/ModeSwitchYubiKeyNEO.txt, doc/Mode_switch_YubiKey_NEO.adoc: 
+	* doc/{ModeSwitchYubiKeyNEO.txt => Mode_switch_YubiKey_NEO.adoc}: 
 	Asciidoc polish.
 
 2014-12-10  Klas Lindfors <klas@yubico.com>

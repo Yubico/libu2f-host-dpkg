@@ -377,6 +377,7 @@ HAVE_SYS_TYPES_H = @HAVE_SYS_TYPES_H@
 HAVE_UNSIGNED_LONG_LONG_INT = @HAVE_UNSIGNED_LONG_LONG_INT@
 HAVE_WCHAR_H = @HAVE_WCHAR_H@
 HAVE_WCHAR_T = @HAVE_WCHAR_T@
+HELP2ADOC = @HELP2ADOC@
 HELP2MAN = @HELP2MAN@
 HIDAPI_CFLAGS = @HIDAPI_CFLAGS@
 HIDAPI_LIBS = @HIDAPI_LIBS@
@@ -462,6 +463,8 @@ U2FH_VERSION_MAJOR = @U2FH_VERSION_MAJOR@
 U2FH_VERSION_MINOR = @U2FH_VERSION_MINOR@
 U2FH_VERSION_NUMBER = @U2FH_VERSION_NUMBER@
 U2FH_VERSION_PATCH = @U2FH_VERSION_PATCH@
+UDEV_CFLAGS = @UDEV_CFLAGS@
+UDEV_LIBS = @UDEV_LIBS@
 UNDEFINE_STRTOK_R = @UNDEFINE_STRTOK_R@
 VERSION = @VERSION@
 WARN_CFLAGS = @WARN_CFLAGS@
@@ -526,12 +529,13 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 udevrulesdir = @udevrulesdir@
+udevrulesfile = @udevrulesfile@
 SUBDIRS = gl u2f-host src tests gtk-doc
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
-EXTRA_DIST = 70-u2f.rules BLURB cfg.mk macosx.mk windows.mk \
-	doc/Mode_switch_YubiKey_NEO.adoc
-dist_udevrules_DATA = 70-u2f.rules
+EXTRA_DIST = BLURB cfg.mk macosx.mk windows.mk COPYING.LGPLv2 \
+	doc/Mode_switch_YubiKey_NEO.adoc 70-u2f.rules 70-old-u2f.rules
+dist_udevrules_DATA = $(udevrulesfile)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -1074,7 +1078,8 @@ my-release:
 	$(YUBICO_WWW_REPO)/publish $(PACKAGE) $(VERSION) $(PACKAGE)-$(VERSION).tar.xz*
 	$(YUBICO_WWW_REPO)/publish $(PACKAGE) $(VERSION) $(PACKAGE)-$(VERSION)-win32.zip*
 	$(YUBICO_WWW_REPO)/publish $(PACKAGE) $(VERSION) $(PACKAGE)-$(VERSION)-win64.zip*
-	rsync -a $(srcdir)/gtk-doc/html/ $(YUBICO_WWW_REPO)/$(PACKAGE)/gtk-doc/
+	$(HELP2ADOC) -e src/u2f-host -n "Yubico Universal 2nd Factor (U2F) Host Tool" > u2f-host.1.txt
+	$(YUBICO_WWW_REPO)/save-mans $(PACKAGE) u2f-host.1.txt
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

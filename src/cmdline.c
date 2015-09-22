@@ -27,7 +27,7 @@
 
 const char *gengetopt_args_info_purpose = "Perform U2F host-side operations on the command line. Reads challenge from\nstandard input and writes a response to standard output.";
 
-const char *gengetopt_args_info_usage = "Usage: " CMDLINE_PARSER_PACKAGE " [OPTIONS]...";
+const char *gengetopt_args_info_usage = "Usage: u2f-host [OPTIONS]...";
 
 const char *gengetopt_args_info_versiontext = "";
 

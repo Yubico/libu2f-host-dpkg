@@ -21,16 +21,12 @@ extern "C" {
 
 #ifndef CMDLINE_PARSER_PACKAGE
 /** @brief the program name (used for printing errors) */
-#define CMDLINE_PARSER_PACKAGE PACKAGE
+#define CMDLINE_PARSER_PACKAGE "u2f-host"
 #endif
 
 #ifndef CMDLINE_PARSER_PACKAGE_NAME
 /** @brief the complete program name (used for help and version) */
-#ifdef PACKAGE_NAME
-#define CMDLINE_PARSER_PACKAGE_NAME PACKAGE_NAME
-#else
-#define CMDLINE_PARSER_PACKAGE_NAME PACKAGE
-#endif
+#define CMDLINE_PARSER_PACKAGE_NAME "u2f-host"
 #endif
 
 #ifndef CMDLINE_PARSER_VERSION
