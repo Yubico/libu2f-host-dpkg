@@ -2,21 +2,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Yubico Universal 2nd Factor C Library: u2f-host-types</title>
+<title>u2f-host-types: Yubico Universal 2nd Factor C Library</title>
 <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
 <link rel="home" href="index.html" title="Yubico Universal 2nd Factor C Library">
 <link rel="up" href="intro.html" title="Yubico Universal 2nd Factor C Library">
 <link rel="prev" href="u2f-host-u2f-host.html" title="u2f-host">
 <link rel="next" href="u2f-host-u2f-host-version.html" title="u2f-host-version">
-<meta name="generator" content="GTK-Doc V1.20 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="10"><tr valign="middle">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
 <td width="100%" align="left" class="shortcuts">
-<a href="#" class="shortcut">Top</a><span id="nav_description"> <span class="dim">|</span> 
-                  <a href="#u2f-host-u2f-host-types.description" class="shortcut">Description</a></span><span id="nav_hierarchy"> <span class="dim">|</span> 
-                  <a href="#u2f-host-u2f-host-types.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#u2f-host-u2f-host-types.description" class="shortcut">Description</a></span>
 </td>
 <td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
 <td><a accesskey="u" href="intro.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
@@ -60,17 +59,13 @@
 </table></div>
 </div>
 <div class="refsect1">
-<a name="u2f-host-u2f-host-types.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">
-</pre>
-</div>
-<div class="refsect1">
 <a name="u2f-host-u2f-host-types.description"></a><h2>Description</h2>
 <p>
 </p>
 </div>
 <div class="refsect1">
 <a name="u2f-host-u2f-host-types.functions_details"></a><h2>Functions</h2>
+<p></p>
 </div>
 <div class="refsect1">
 <a name="u2f-host-u2f-host-types.other_details"></a><h2>Types and Values</h2>
@@ -78,7 +73,7 @@
 <a name="u2fh-rc"></a><h3>enum u2fh_rc</h3>
 <p>Error codes.</p>
 <div class="refsect3">
-<a name="id-1.2.4.7.2.4"></a><h4>Members</h4>
+<a name="id-1.2.4.6.2.4"></a><h4>Members</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -130,6 +125,20 @@
 </tr>
 <tr>
 <td class="enum_member_name"><p><a name="U2FH-AUTHENTICATOR-ERROR:CAPS"></a>U2FH_AUTHENTICATOR_ERROR</p></td>
+<td class="enum_member_description">
+<p>Authenticator error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="U2FH-TIMEOUT-ERROR:CAPS"></a>U2FH_TIMEOUT_ERROR</p></td>
+<td class="enum_member_description">
+<p>Timeout error.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="U2FH-SIZE-ERROR:CAPS"></a>U2FH_SIZE_ERROR</p></td>
 <td class="enum_member_description"> </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -142,7 +151,7 @@
 <a name="u2fh-initflags"></a><h3>enum u2fh_initflags</h3>
 <p>Flags passed to <a class="link" href="u2f-host-u2f-host.html#u2fh-global-init" title="u2fh_global_init ()"><code class="function">u2fh_global_init()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.4.7.3.4"></a><h4>Members</h4>
+<a name="id-1.2.4.6.3.4"></a><h4>Members</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -164,7 +173,7 @@
 <a name="u2fh-cmdflags"></a><h3>enum u2fh_cmdflags</h3>
 <p>Flags passed to <a class="link" href="u2f-host-u2f-host.html#u2fh-register" title="u2fh_register ()"><code class="function">u2fh_register()</code></a> and <a class="link" href="u2f-host-u2f-host.html#u2fh-authenticate" title="u2fh_authenticate ()"><code class="function">u2fh_authenticate()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.4.7.4.4"></a><h4>Members</h4>
+<a name="id-1.2.4.6.4.4"></a><h4>Members</h4>
 <div class="informaltable"><table width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -174,7 +183,7 @@
 <tbody><tr>
 <td class="enum_member_name"><p><a name="U2FH-REQUEST-USER-PRESENCE:CAPS"></a>U2FH_REQUEST_USER_PRESENCE</p></td>
 <td class="enum_member_description">
-<p>Request user precense.</p>
+<p>Request user presence.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr></tbody>
@@ -192,7 +201,6 @@
 </div>
 </div>
 <div class="footer">
-<hr>
-          Generated by GTK-Doc V1.20</div>
+<hr>Generated by GTK-Doc V1.24</div>
 </body>
 </html>

@@ -93,9 +93,12 @@ prepare_browserdata (const char *challenge, const char *origin,
 
 done:
   json_object_put (jo);
-  json_object_put (chal);
-  json_object_put (orig);
-  json_object_put (typ);
+  if (!jo)
+    {
+      json_object_put (chal);
+      json_object_put (orig);
+      json_object_put (typ);
+    }
   return rc;
 }
 
@@ -152,21 +155,19 @@ u2fh_sendrecv (u2fh_devs * devs, unsigned index, uint8_t cmd,
 {
   int datasent = 0;
   int sequence = 0;
-  struct u2fdevice *dev;
+  struct u2fdevice *dev = get_device (devs, index);
 
-  if (index >= devs->num_devices || !devs->devs[index].is_alive)
+  if (!dev)
     {
       return U2FH_NO_U2F_DEVICE;
     }
-
-  dev = &devs->devs[index];
 
   while (sendlen > datasent)
     {
       U2FHID_FRAME frame = { 0 };
       {
 	int len = sendlen - datasent;
-	int maxlen;
+	unsigned int maxlen;
 	unsigned char *data;
 	frame.cid = dev->cid;
 	if (datasent == 0)
@@ -217,9 +218,9 @@ u2fh_sendrecv (u2fh_devs * devs, unsigned index, uint8_t cmd,
     U2FHID_FRAME frame;
     unsigned char data[HID_RPT_SIZE];
     int len = HID_RPT_SIZE;
-    int maxlen = *recvlen;
+    unsigned int maxlen = *recvlen;
     int recvddata = 0;
-    short datalen;
+    unsigned short datalen;
     int timeout = HID_TIMEOUT;
     int rc = 0;
 
@@ -317,19 +318,22 @@ u2fh_rc
 send_apdu (u2fh_devs * devs, int index, int cmd, const unsigned char *d,
 	   size_t dlen, int p1, unsigned char *out, size_t * outlen)
 {
-  unsigned char data[2048];
+  unsigned char data[2048] = {0};
   int rc;
 
   if (dlen > MAXDATASIZE)
     return U2FH_MEMORY_ERROR;
 
-  sprintf (data, "%c%c%c%c%c%c%c", 0, cmd, p1, 0, 0, (dlen >> 8) & 0xff,
-	   dlen & 0xff);
+  data[1] = cmd;
+  data[2] = p1;
+  data[5] = (dlen >> 8) & 0xff;
+  data[6] = dlen & 0xff;
   memcpy (data + RESPHEAD_SIZE, d, dlen);
+  memset (data + RESPHEAD_SIZE + dlen, 0, 2);
 
   rc =
-    u2fh_sendrecv (devs, index, U2FHID_MSG, data, RESPHEAD_SIZE + dlen, out,
-		   outlen);
+    u2fh_sendrecv (devs, index, U2FHID_MSG, data, RESPHEAD_SIZE + dlen + 2,
+		   out, outlen);
   if (rc != U2FH_OK)
     {
       if (debug)

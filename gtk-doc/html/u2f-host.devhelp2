@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
 <book xmlns="http://www.devhelp.net/book" title="Yubico Universal 2nd Factor C Library" link="index.html" author="" name="u2f-host" version="2" language="c">
   <chapters>
     <sub name="Yubico Universal 2nd Factor C Library" link="intro.html">
@@ -31,5 +30,16 @@
     <keyword type="macro" name="U2FH_VERSION_MAJOR" link="u2f-host-u2f-host-version.html#U2FH-VERSION-MAJOR:CAPS"/>
     <keyword type="macro" name="U2FH_VERSION_MINOR" link="u2f-host-u2f-host-version.html#U2FH-VERSION-MINOR:CAPS"/>
     <keyword type="macro" name="U2FH_VERSION_PATCH" link="u2f-host-u2f-host-version.html#U2FH-VERSION-PATCH:CAPS"/>
+    <keyword type="constant" name="U2FH_OK" link="u2f-host-u2f-host-types.html#U2FH-OK:CAPS"/>
+    <keyword type="constant" name="U2FH_MEMORY_ERROR" link="u2f-host-u2f-host-types.html#U2FH-MEMORY-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_TRANSPORT_ERROR" link="u2f-host-u2f-host-types.html#U2FH-TRANSPORT-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_JSON_ERROR" link="u2f-host-u2f-host-types.html#U2FH-JSON-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_BASE64_ERROR" link="u2f-host-u2f-host-types.html#U2FH-BASE64-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_NO_U2F_DEVICE" link="u2f-host-u2f-host-types.html#U2FH-NO-U2F-DEVICE:CAPS"/>
+    <keyword type="constant" name="U2FH_AUTHENTICATOR_ERROR" link="u2f-host-u2f-host-types.html#U2FH-AUTHENTICATOR-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_TIMEOUT_ERROR" link="u2f-host-u2f-host-types.html#U2FH-TIMEOUT-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_SIZE_ERROR" link="u2f-host-u2f-host-types.html#U2FH-SIZE-ERROR:CAPS"/>
+    <keyword type="constant" name="U2FH_DEBUG" link="u2f-host-u2f-host-types.html#U2FH-DEBUG:CAPS"/>
+    <keyword type="constant" name="U2FH_REQUEST_USER_PRESENCE" link="u2f-host-u2f-host-types.html#U2FH-REQUEST-USER-PRESENCE:CAPS"/>
   </functions>
 </book>

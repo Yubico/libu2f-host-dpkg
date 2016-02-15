@@ -1,7 +1,6 @@
 <ONLINE href="https://github.com/Yubico/libu2f-host">
 <ANCHOR id="u2f-host-u2f-host" href="u2f-host/u2f-host-u2f-host.html">
 <ANCHOR id="u2f-host-u2f-host.functions" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.functions">
-<ANCHOR id="u2f-host-u2f-host.object-hierarchy" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.object-hierarchy">
 <ANCHOR id="u2f-host-u2f-host.description" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.description">
 <ANCHOR id="u2f-host-u2f-host.functions_details" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.functions_details">
 <ANCHOR id="u2fh-global-init" href="u2f-host/u2f-host-u2f-host.html#u2fh-global-init">
@@ -19,18 +18,27 @@
 <ANCHOR id="u2f-host-u2f-host.other_details" href="u2f-host/u2f-host-u2f-host.html#u2f-host-u2f-host.other_details">
 <ANCHOR id="u2f-host-u2f-host-types" href="u2f-host/u2f-host-u2f-host-types.html">
 <ANCHOR id="u2f-host-u2f-host-types.other" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.other">
-<ANCHOR id="u2f-host-u2f-host-types.object-hierarchy" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.object-hierarchy">
 <ANCHOR id="u2f-host-u2f-host-types.description" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.description">
 <ANCHOR id="u2f-host-u2f-host-types.functions_details" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.functions_details">
 <ANCHOR id="u2f-host-u2f-host-types.other_details" href="u2f-host/u2f-host-u2f-host-types.html#u2f-host-u2f-host-types.other_details">
 <ANCHOR id="u2fh-rc" href="u2f-host/u2f-host-u2f-host-types.html#u2fh-rc">
+<ANCHOR id="U2FH-OK:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-OK:CAPS">
+<ANCHOR id="U2FH-MEMORY-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-MEMORY-ERROR:CAPS">
+<ANCHOR id="U2FH-TRANSPORT-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-TRANSPORT-ERROR:CAPS">
+<ANCHOR id="U2FH-JSON-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-JSON-ERROR:CAPS">
+<ANCHOR id="U2FH-BASE64-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-BASE64-ERROR:CAPS">
+<ANCHOR id="U2FH-NO-U2F-DEVICE:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-NO-U2F-DEVICE:CAPS">
+<ANCHOR id="U2FH-AUTHENTICATOR-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-AUTHENTICATOR-ERROR:CAPS">
+<ANCHOR id="U2FH-TIMEOUT-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-TIMEOUT-ERROR:CAPS">
+<ANCHOR id="U2FH-SIZE-ERROR:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-SIZE-ERROR:CAPS">
 <ANCHOR id="u2fh-initflags" href="u2f-host/u2f-host-u2f-host-types.html#u2fh-initflags">
+<ANCHOR id="U2FH-DEBUG:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-DEBUG:CAPS">
 <ANCHOR id="u2fh-cmdflags" href="u2f-host/u2f-host-u2f-host-types.html#u2fh-cmdflags">
+<ANCHOR id="U2FH-REQUEST-USER-PRESENCE:CAPS" href="u2f-host/u2f-host-u2f-host-types.html#U2FH-REQUEST-USER-PRESENCE:CAPS">
 <ANCHOR id="u2fh-devs" href="u2f-host/u2f-host-u2f-host-types.html#u2fh-devs">
 <ANCHOR id="u2f-host-u2f-host-version" href="u2f-host/u2f-host-u2f-host-version.html">
 <ANCHOR id="u2f-host-u2f-host-version.functions" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.functions">
 <ANCHOR id="u2f-host-u2f-host-version.other" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.other">
-<ANCHOR id="u2f-host-u2f-host-version.object-hierarchy" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.object-hierarchy">
 <ANCHOR id="u2f-host-u2f-host-version.description" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.description">
 <ANCHOR id="u2f-host-u2f-host-version.functions_details" href="u2f-host/u2f-host-u2f-host-version.html#u2f-host-u2f-host-version.functions_details">
 <ANCHOR id="u2fh-check-version" href="u2f-host/u2f-host-u2f-host-version.html#u2fh-check-version">
