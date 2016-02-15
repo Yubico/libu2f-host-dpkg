@@ -148,54 +148,119 @@ get_usages (struct hid_device_info *dev, unsigned short *usage_page,
 }
 
 static void
-close_device (struct u2fdevice *dev)
+close_device (u2fh_devs * devs, struct u2fdevice *dev)
 {
   hid_close (dev->devh);
   free (dev->device_path);
   free (dev->device_string);
-  dev->is_alive = 0;
+  if (dev == devs->first)
+    {
+      if (dev->next)
+	{
+	  devs->first = dev->next;
+	}
+      else
+	{
+	  devs->first = NULL;
+	}
+      free (dev);
+    }
+  else
+    {
+      struct u2fdevice *d;
+      for (d = devs->first; d != NULL; d = d->next)
+	{
+	  struct u2fdevice *next = d->next;
+	  if (next && next == dev)
+	    {
+	      dev->next = next->next;
+	      free (next);
+	    }
+	}
+    }
+}
+
+struct u2fdevice *
+get_device (u2fh_devs * devs, unsigned id)
+{
+  struct u2fdevice *dev;
+  for (dev = devs->first; dev != NULL; dev = dev->next)
+    {
+      if (dev->id == id)
+	{
+	  return dev;
+	}
+    }
+  return NULL;
+}
+
+static struct u2fdevice *
+new_device (u2fh_devs * devs)
+{
+  struct u2fdevice *new = malloc (sizeof (struct u2fdevice));
+  if (new == NULL)
+    {
+      return NULL;
+    }
+  memset (new, 0, sizeof (struct u2fdevice));
+  new->id = devs->max_id++;
+  if (devs->first == NULL)
+    {
+      devs->first = new;
+    }
+  else
+    {
+      struct u2fdevice *dev;
+      for (dev = devs->first; dev != NULL; dev = dev->next)
+	{
+	  if (dev->next == NULL)
+	    {
+	      break;
+	    }
+	}
+      dev->next = new;
+    }
+  return new;
 }
 
 static void
 close_devices (u2fh_devs * devs)
 {
-  int i;
-  if (devs == NULL || devs->num_devices == 0)
+  struct u2fdevice *dev;
+  if (devs == NULL)
     {
       return;
     }
+  dev = devs->first;
 
-  for (i = 0; i < devs->num_devices; i++)
+  while (dev)
     {
-      struct u2fdevice *dev = &devs->devs[i];
-      if (dev->is_alive)
-	{
-	  close_device (dev);
-	}
+      struct u2fdevice *next = dev->next;
+      close_device (devs, dev);
+      dev = next;
     }
-  devs->num_devices = 0;
 }
 
 static int
-init_device (u2fh_devs * devs, unsigned index)
+init_device (u2fh_devs * devs, struct u2fdevice *dev)
 {
   unsigned char resp[1024];
   /* FIXME: use something slightly more random as nonce */
   unsigned char nonce[] = { 0x8, 0x7, 0x6, 0x5, 0x4, 0x3, 0x2, 0x1 };
   size_t resplen = sizeof (resp);
-  devs->devs[index].cid = CID_BROADCAST;
+  dev->cid = CID_BROADCAST;
 
   if (u2fh_sendrecv
-      (devs, index, U2FHID_INIT, nonce, sizeof (nonce), resp,
+      (devs, dev->id, U2FHID_INIT, nonce, sizeof (nonce), resp,
        &resplen) == U2FH_OK)
     {
       U2FHID_INIT_RESP initresp;
       memcpy (&initresp, resp, resplen);
-      devs->devs[index].cid = initresp.cid;
-      devs->devs[index].versionInterface = initresp.versionInterface;
-      devs->devs[index].versionMajor = initresp.versionMajor;
-      devs->devs[index].versionMinor = initresp.versionMinor;
-      devs->devs[index].capFlags = initresp.capFlags;
+      dev->cid = initresp.cid;
+      dev->versionInterface = initresp.versionInterface;
+      dev->versionMajor = initresp.versionMajor;
+      dev->versionMinor = initresp.versionMinor;
+      dev->capFlags = initresp.capFlags;
     }
   else
     {
@@ -270,6 +335,7 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
   struct hid_device_info *di, *cur_dev;
   u2fh_rc res = U2FH_NO_U2F_DEVICE;
   unsigned index;
+  struct u2fdevice *dev;
 
   di = hid_enumerate (0, 0);
   for (cur_dev = di; cur_dev; cur_dev = cur_dev->next)
@@ -277,13 +343,8 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
       int found = 0;
       unsigned short usage_page = 0, usage = 0;
 
-      for (index = 0; index < devs->num_devices; index++)
+      for (dev = devs->first; dev != NULL; dev = dev->next)
 	{
-	  struct u2fdevice *dev = &devs->devs[index];
-	  if (!dev->is_alive)
-	    {
-	      continue;
-	    }
 	  if (strcmp (dev->device_path, cur_dev->path) == 0)
 	    {
 	      if (ping_device (devs, index) == U2FH_OK)
@@ -299,7 +360,7 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
 		      fprintf (stderr, "Device %s failed ping, dead.\n",
 			       dev->device_path);
 		    }
-		  close_device (dev);
+		  close_device (devs, dev);
 		  break;
 		}
 	    }
@@ -312,23 +373,17 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
       get_usages (cur_dev, &usage_page, &usage);
       if (usage_page == FIDO_USAGE_PAGE && usage == FIDO_USAGE_U2FHID)
 	{
-	  devs->devs =
-	    realloc (devs->devs,
-		     (devs->num_devices + 1) * sizeof (struct u2fdevice));
-	  struct u2fdevice *dev = &devs->devs[devs->num_devices];
-	  memset (dev, 0, sizeof (struct u2fdevice));
+	  dev = new_device (devs);
 	  dev->devh = hid_open_path (cur_dev->path);
 	  if (dev->devh != NULL)
 	    {
 	      dev->device_path = strdup (cur_dev->path);
 	      if (dev->device_path == NULL)
 		{
-		  close_device (dev);
-		  return U2FH_MEMORY_ERROR;
+		  close_device (devs, dev);
+		  goto out;
 		}
-	      index = devs->num_devices++;
-	      dev->is_alive = 1;
-	      if (init_device (devs, index) == U2FH_OK)
+	      if (init_device (devs, dev) == U2FH_OK)
 		{
 		  if (cur_dev->product_string)
 		    {
@@ -337,8 +392,8 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
 		      dev->device_string = malloc (len + 1);
 		      if (dev->device_string == NULL)
 			{
-			  close_device (dev);
-			  return U2FH_MEMORY_ERROR;
+			  close_device (devs, dev);
+			  goto out;
 			}
 		      memset (dev->device_string, 0, len + 1);
 		      wcstombs (dev->device_string, cur_dev->product_string,
@@ -358,25 +413,18 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
 			}
 		    }
 		  res = U2FH_OK;
-		}
-	      else
-		{
-		  close_device (dev);
-		  devs->num_devices--;
+		  continue;
 		}
 	    }
+	  close_device (devs, dev);
 	}
     }
 
-  for (index = 0; index < devs->num_devices; index++)
+
+  for (dev = devs->first; dev != NULL; dev = dev->next)
     {
-      struct u2fdevice *dev = &devs->devs[index];
       int found = 0;
 
-      if (!dev->is_alive)
-	{
-	  continue;
-	}
       for (cur_dev = di; cur_dev; cur_dev = cur_dev->next)
 	{
 	  if (strcmp (cur_dev->path, dev->device_path) == 0)
@@ -390,13 +438,14 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
 	    {
 	      fprintf (stderr, "device %s looks dead.\n", dev->device_path);
 	    }
-	  close_device (dev);
+	  close_device (devs, dev);
 	}
     }
 
+out:
   hid_free_enumeration (di);
   if (res == U2FH_OK && max_index)
-    *max_index = devs->num_devices - 1;
+    *max_index = devs->max_id - 1;
 
   return res;
 }
@@ -411,11 +460,7 @@ u2fh_devs_discover (u2fh_devs * devs, unsigned *max_index)
 void
 u2fh_devs_done (u2fh_devs * devs)
 {
-  if (devs == NULL)
-    return;
-
   close_devices (devs);
-  free (devs->devs);
   hid_exit ();
 
   free (devs);
@@ -437,15 +482,13 @@ u2fh_rc
 u2fh_get_device_description (u2fh_devs * devs, unsigned index, char *out,
 			     size_t * len)
 {
-  struct u2fdevice *dev;
   size_t i;
+  struct u2fdevice *dev = get_device (devs, index);
 
-  if (index >= devs->num_devices || !devs->devs[index].is_alive)
+  if (!dev)
     {
       return U2FH_NO_U2F_DEVICE;
     }
-
-  dev = &devs->devs[index];
   i = strlen (dev->device_string);
   if (i < *len)
     {
@@ -471,7 +514,7 @@ u2fh_get_device_description (u2fh_devs * devs, unsigned index, char *out,
 int
 u2fh_is_alive (u2fh_devs * devs, unsigned index)
 {
-  if (index >= devs->num_devices || !devs->devs[index].is_alive)
+  if (!get_device (devs, index))
     return 0;
   return 1;
 }

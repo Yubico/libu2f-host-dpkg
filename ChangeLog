@@ -1,3 +1,160 @@
+2016-02-15  Klas Lindfors <klas@yubico.com>
+
+	* NEWS: NEWS for 1.1.0
+
+2016-02-15  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/register.c: use strcpy() instead
+	of strncpy() should be safe since we check length
+
+2016-02-08  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #46 from conorpp/unsigned-ints use unsigned ints to prevent buffer overflows
+
+2016-02-05  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/u2fmisc.c: replace sprintf to unsigned char* with just
+	setting the bytes
+
+2016-01-28  Conor <conorpp@vt.edu>
+
+	* u2f-host/u2fmisc.c: use unsigned ints to prevent buffer overflows
+
+2015-12-11  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/cdecode.c: fix indentation of cdecode
+
+2015-12-11  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/devs.c: fixup discover_devs
+
+2015-12-10  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/devs.c, u2f-host/internal.h,
+	u2f-host/register.c, u2f-host/u2fmisc.c: start a refactor of the
+	devices array to a linked list This allows us to not keep dead devices around, treat the index as
+	an increasting id instead.  This also fixes the variable size array
+	in authenticate by usign a temporary field on each device for
+	skipping.
+
+2015-12-10  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #36 from neuhaus/patch-2 typos etc
+
+2015-12-03  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c, u2f-host/register.c: on SIZE_ERROR return
+	the length needed in *response_len
+
+2015-12-02  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/cencode.c: don't do base64 padding u2f base64 is supposet to be non-padded fixes #31
+
+2015-12-02  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/register.c, u2f-host/u2fmisc.c: make indent
+
+2015-12-02  Klas Lindfors <klas@yubico.com>
+
+	* src/u2f-host.c: use u2fh_authenticate2() and u2fh_register2()
+
+2015-12-02  Klas Lindfors <klas@yubico.com>
+
+	* configure.ac, u2f-host/authenticate.c, u2f-host/error.c,
+	u2f-host/register.c, u2f-host/u2f-host-types.h,
+	u2f-host/u2f-host.h, u2f-host/u2f-host.map: add u2fh_authenticate2()
+	and u2fh_register2() they both take allocated memory and a length instead of passing back
+	allocated memory from the library.  fixes #41
+
+2015-11-19  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #40 from prefiks/valgrind_warning_fix Don't do memcmp on uninitialized memory
+
+2015-11-16  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #39 from prefiks/fix_json_memory_management Don't release json object that we don't own no more
+
+2015-11-12  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #37 from prefiks/send_apdu_like_chrome Make send_apdu send data like chrome does
+
+2015-11-10  Paweł Chmielowski <pchmielowski@process-one.net>
+
+	* 70-old-u2f.rules, 70-u2f.rules: Add udev rules for Keydo AES
+
+2015-11-10  Paweł Chmielowski <pchmielowski@process-one.net>
+
+	* u2f-host/u2fmisc.c: Make send_apdu send data like chrome does This improves compatibility with NeoWave Keydo AES and HyperFido
+
+2015-11-06  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* 70-old-u2f.rules: Update 70-old-u2f.rules
+
+2015-11-06  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* 70-u2f.rules: Update 70-u2f.rules
+
+2015-11-05  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* doc/Mode_switch_YubiKey_NEO.adoc: missing hyphen
+
+2015-11-05  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* src/cmdline.ggo: missing hypen
+
+2015-11-05  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* : Merge pull request #2 from neuhaus/patch-4 minor typos
+
+2015-11-05  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* README: minor typos
+
+2015-11-05  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* 70-old-u2f.rules: typo
+
+2015-11-05  Sven Neuhaus <neuhaus@users.noreply.github.com>
+
+	* 70-u2f.rules: typo
+
+2015-11-03  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #32 from prefiks/master Don't return success from u2fh_{register/authenticate} without also
+	setting response output argument
+
+2015-11-01  Ed Schaller <schallee@darkmist.net>
+
+	* src/Makefile.am, tests/Makefile.am: Enable out of src tree builds.  u2f-host-version.h is dynamically generated so the
+	$(top_builddir)/u2f-host needs to be added to AM_CPPFLAGS.
+
+2015-10-30  Paweł Chmielowski <pchmielowski@process-one.net>
+
+	* u2f-host/authenticate.c, u2f-host/register.c: Don't return success
+	from u2fh_{register/authenticate} when no data was received Without this change it was possible to get U2FH_OK return code from
+	those function and get response output variable pointing to random
+	memory, that could lead to SIGSEGV.
+
+2015-10-29  Alessio Di Mauro <alessio@yubico.com>
+
+	* src/cmdline.ggo, u2f-host/u2f-host-types.h: Fix typo.
+
+2015-09-30  Klas Lindfors <klas@yubico.com>
+
+	* 70-old-u2f.rules: add more devices to old u2f rules fixes #29
+
+2015-09-30  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #30 from mhalano/more-rules Add new udev rules for other FIDO U2F tokens.
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* .gitignore: ignore more
+
+2015-08-27  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions
+
 2015-08-27  Klas Lindfors <klas@yubico.com>
 
 	* NEWS: NEWS for 1.0.0
