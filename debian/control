@@ -5,14 +5,15 @@ Section: utils
 Priority: extra
 Build-Depends: debhelper (>= 9),
 	       pkg-config,
+	       libglib2.0-dev,
 	       libhidapi-dev,
-	       libjson0-dev,
+	       libjson-c-dev,
 	       gengetopt,
 	       help2man,
 	       dh-autoreconf,
 	       gtk-doc-tools,
 	       dblatex
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: https://developers.yubico.com/libu2f-host/
 Vcs-Git: git://github.com/Yubico/libu2f-host-dpkg.git
 Vcs-Browser: https://github.com/Yubico/libu2f-host-dpkg
