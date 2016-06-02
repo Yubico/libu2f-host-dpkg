@@ -1,3 +1,10 @@
+libu2f-host (1.0.0-2+nmu1) unstable; urgency=medium
+
+  * Fix dependencies (libjson & glib2.0) (Closes: 820686).
+  * Non-maintainer upload.
+
+ -- Nicolas Braud-Santoni <nicolas@braud-santoni.eu>  Wed, 01 Jun 2016 23:55:05 +0200
+
 libu2f-host (1.0.0-2) UNRELEASED; urgency=low
 
   * Add gbp.conf.

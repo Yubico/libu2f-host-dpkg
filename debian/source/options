@@ -1,1 +1,1 @@
-extend-diff-ignore="gtk-doc/tmpl/u2f-host-types.sgml|gtk-doc/tmpl/u2f-host-version.sgml|gtk-doc/tmpl/u2f-host.sgml"
+extend-diff-ignore="gtk-doc/tmpl/u2f-host-types.sgml|gtk-doc/tmpl/u2f-host-version.sgml|gtk-doc/tmpl/u2f-host.sgml|gtk-doc/html/*.html|gtk-doc/u2f-host.pdf"
