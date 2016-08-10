@@ -1,3 +1,132 @@
+2016-06-22  Klas Lindfors <klas@yubico.com>
+
+	* NEWS: NEWS for 1.1.2
+
+2016-06-22  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/inc/u2f.h, u2f-host/inc/u2f_hid.h, u2f-host/u2f-host.h: 
+	drop unneeded parantheses maint.mk complains on syntax-check
+
+2016-06-22  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/CMakeLists.txt: drop trailing space maint.mk rules complain..
+
+2016-06-16  Klas Lindfors <klas@yubico.com>
+
+	* NEWS: better heading for NEWS
+
+2016-06-16  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am, README, cfg.mk, macosx.mk, src/Makefile.am,
+	src/cmdline.ggo, src/u2f-host.c, windows.mk: Change license of
+	Yubico owned files to LGPL 2.1+ fixes #55
+
+2016-05-19  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #51 from Dashlane/cmake Cmake build script
+
+2016-04-05  David Henot <david.henot@dashlane.com>
+
+	* CMakeLists.txt, u2f-host/CMakeLists.txt,
+	u2f-host/config.h.cmake.in, u2f-host/u2f-host.h: Add Cmake
+	configuration for compilation with Visual Studio
+
+2016-05-17  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #56 from robn/master Add udev rules for Feitian ePass FIDO
+
+2016-05-10  Klas Lindfors <klas@yubico.com>
+
+	* Makefile.am: mode switch document swtiched names
+
+2016-05-02  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #54 from Dashlane/visual-studio-fixes Visual studio fixes
+
+2016-04-21  Klas Lindfors <klas@yubico.com>
+
+	* doc/{Mode_switch_YubiKey_NEO.adoc => Mode_switch_YubiKey.adoc}: 
+	change name of mode switch document since it's valid for 4 as well
+
+2015-12-16  David Hénot <david.henot@dashlane.com>
+
+	* u2f-host/inc/u2f.h, u2f-host/inc/u2f_hid.h, u2f-host/u2f-host.h: 
+	Fix compilation on VS2008
+
+2015-12-10  dhenot <david.denot@dashlane.com>
+
+	* u2f-host/authenticate.c: Put declarations before statements for
+	C89 compatibility
+
+2015-12-09  dhenot <david.denot@dashlane.com>
+
+	* u2f-host/authenticate.c, u2f-host/devs.c, u2f-host/register.c: 
+	unistd.h is already included by internal.h for non-Windows platforms
+	and missing on Windows
+
+2016-03-29  Klas Lindfors <klas@yubico.com>
+
+	* README: try to clarify how osx and win builds are used fixes #50
+
+2016-03-16  Klas Lindfors <klas@yubico.com>
+
+	* README: use https URL for git clone
+
+2016-03-15  Klas Lindfors <klas@yubico.com>
+
+	* src/u2f-host.c, u2f-host/authenticate.c: for completeness check
+	length of reply
+
+2016-03-15  Klas Lindfors <klas@yubico.com>
+
+	* src/u2f-host.c, u2f-host/authenticate.c: let authenticate return
+	U2FH_OK if touch is not required and the key indicates for touch also fix output slightly when there
+	is no response relates #45
+
+2016-03-14  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions.
+
+2016-03-14  Klas Lindfors <klas@yubico.com>
+
+	* NEWS: NEWS for 1.1.1
+
+2016-03-14  Klas Lindfors <klas@yubico.com>
+
+	* README: libhidapi-dev is needed for building fixes #48
+
+2016-03-14  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/devs.c: refactor close_device() to be safer let it return a pointer to dev->next and use that in some places we
+	where unsafely iterating the list and removing entries in a for loop
+
+2016-03-14  Klas Lindfors <klas@yubico.com>
+
+	* src/u2f-host.c: drop code validating the scheme of origin fixes #49
+
+2016-03-14  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/u2fmisc.c: fix indentation
+
+2016-03-11  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c: authenticate increased iterations before
+	checking if it was 0 thus remembering which devices to skip from call to call
+
+2016-03-11  Klas Lindfors <klas@yubico.com>
+
+	* u2f-host/authenticate.c: fix an issue where we left the
+	authenticate loop early on failure this only happens on multiple devices where a non-interesting device
+	is last in the list
+
+2016-03-07  Klas Lindfors <klali@avm.se>
+
+	* : Merge pull request #47 from jaym/fix-uninitialized Use index from u2fdevice struct
+
+2016-02-15  Klas Lindfors <klas@yubico.com>
+
+	* NEWS, configure.ac: bump versions
+
 2016-02-15  Klas Lindfors <klas@yubico.com>
 
 	* NEWS: NEWS for 1.1.0

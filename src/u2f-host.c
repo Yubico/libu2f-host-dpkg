@@ -1,18 +1,18 @@
 /*
   Copyright (C) 2013-2015 Yubico AB
 
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 2.1, or (at your option) any
+  later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+  General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU Lesser General Public License
+  along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <config.h>
@@ -89,13 +89,6 @@ main (int argc, char *argv[])
 	  fprintf (stderr, "error: origin URL empty, use -o to specify it\n");
 	  exit (EXIT_FAILURE);
 	}
-      else if (strncmp ("pam://", args_info.origin_arg, 6) != 0
-	       && strncmp ("http://", args_info.origin_arg, 7) != 0
-	       && strncmp ("https://", args_info.origin_arg, 8) != 0)
-	{
-	  fprintf (stderr, "error: origin must be pam, http or https\n");
-	  exit (EXIT_FAILURE);
-	}
 
       if (args_info.action_arg == action_arg_register)
 	{
@@ -133,13 +126,16 @@ main (int argc, char *argv[])
       fprintf (stderr, "error: unknown action.\n");
       goto done;
     }
-  if (rc != U2FH_OK || response == NULL)
+  if (rc != U2FH_OK)
     {
       fprintf (stderr, "error (%d): %s\n", rc, u2fh_strerror (rc));
       goto done;
     }
 
-  printf ("%s\n", response);
+  if (strlen (response))
+    {
+      printf ("%s\n", response);
+    }
 
   exit_code = EXIT_SUCCESS;
 
