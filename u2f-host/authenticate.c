@@ -18,7 +18,6 @@
 #include <config.h>
 #include "internal.h"
 
-#include <unistd.h>
 #include <json.h>
 #include "b64/cencode.h"
 #include "b64/cdecode.h"
@@ -171,10 +170,6 @@ _u2fh_authenticate (u2fh_devs * devs,
   do
     {
       struct u2fdevice *dev;
-      if (iterations++ > 15)
-	{
-	  return U2FH_TIMEOUT_ERROR;
-	}
       for (dev = devs->first; dev != NULL; dev = dev->next)
 	{
 	  unsigned char tmp_buf[MAXDATASIZE];
@@ -204,7 +199,14 @@ _u2fh_authenticate (u2fh_devs * devs,
 	    {
 	      dev->skipped = 1;
 	    }
-	  memcpy (buf, tmp_buf, len);
+	  else
+	    {
+	      memcpy (buf, tmp_buf, len);
+	    }
+	}
+      if (iterations++ > 15)
+	{
+	  return U2FH_TIMEOUT_ERROR;
 	}
       if (len == 2 && memcmp (buf, NOTSATISFIED, 2) == 0)
 	{
@@ -217,6 +219,11 @@ _u2fh_authenticate (u2fh_devs * devs,
   if (len == 2 && memcmp (buf, NOTSATISFIED, 2) != 0)
     {
       return U2FH_AUTHENTICATOR_ERROR;
+    }
+  else if ((flags & U2FH_REQUEST_USER_PRESENCE) == 0
+	   && len == 2 && memcmp (buf, NOTSATISFIED, 2) == 0)
+    {
+      return U2FH_OK;
     }
   if (len != 2)
     {
@@ -269,8 +276,9 @@ u2fh_authenticate (u2fh_devs * devs,
 		   const char *challenge,
 		   const char *origin, char **response, u2fh_cmdflags flags)
 {
-  *response = NULL;
   size_t response_len = 0;
+
+  *response = NULL;
   return _u2fh_authenticate (devs, challenge, origin, response, &response_len,
 			     flags);
 }
