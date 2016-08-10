@@ -15,7 +15,7 @@ Build-Depends: debhelper (>= 9),
 	       dblatex
 Standards-Version: 3.9.8
 Homepage: https://developers.yubico.com/libu2f-host/
-Vcs-Git: git://github.com/Yubico/libu2f-host-dpkg.git
+Vcs-Git: https://github.com/Yubico/libu2f-host-dpkg.git
 Vcs-Browser: https://github.com/Yubico/libu2f-host-dpkg
 
 Package: libu2f-host0
